@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+    "name": "Checkly CLI Generator",
+    "description": "This extension generates API CLI Config from the UI",
+    "version": "1.0",
+    "action": {
+      "default_icon": "img/logo.png",
+      "default_popup": "html/popup.html",
+      "default_title": "CLI Generator"
+    },
+    "permissions": [
+      "activeTab",
+      "clipboardWrite"
+    ],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
