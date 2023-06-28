@@ -3,9 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
       chrome.tabs.sendMessage(tabs[0].id, {method: "getText"}, function(response) {
         var post_body = []
         if (response.data.method == "POST"){
-            var post_body = `body: JSON.stringify({
-            name: 'checkly'
-    }),`
+            var post_body = `
+      body: JSON.stringify({
+          name: 'checkly'
+      }),`
         }
         if(response.method == "getText"){
           let formattedText = `
@@ -17,8 +18,7 @@ new ApiCheck('customer-api-check', {
     group,
     request: {
       url: '${response.data.url}',
-      method: '${response.data.method}',
-      ${post_body}
+      method: '${response.data.method}',${post_body}
       followRedirects: true,
       skipSSL: false,
       assertions: [
